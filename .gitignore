@@ -1,0 +1,3 @@
+# rendus audio jetables (les demos du README sont en .mp4, versionnees)
+*.wav
+__pycache__/

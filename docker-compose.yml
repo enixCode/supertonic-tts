@@ -1,0 +1,34 @@
+services:
+  # API HTTP. Routes du SDK : /v1/tts, /v1/tts/batch, /v1/styles,
+  # /v1/styles/import, /v1/health.
+  # /v1/audio/speech est remplacee ici par une version compatible OpenAI
+  # (formats mp3/wav/pcm/flac, stream_format). Doc interactive sur /docs.
+  api:
+    build: .
+    image: supertonic-tts:latest
+    ports:
+      # Ecoute uniquement sur cette machine. Pour exposer le service au
+      # reseau local, remplacer par "8000:8000" (aucune authentification
+      # n'est prevue : ne le faites que sur un reseau de confiance).
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - ./voices:/app/voices        # les voix custom (<nom>.json)
+      - ./api.py:/app/api.py        # code monte en direct : edit sans rebuild
+      - ./blend.py:/app/blend.py    # pour `docker compose run --rm api python blend.py`
+      - st-model-cache:/data        # modele + presets officiels, telecharges 1x
+    # environment:
+    #   # Ces deux-la valent pour tout le serveur :
+    #   TTS_MODEL: supertonic-3      # supertonic | supertonic-2 | supertonic-3
+    #   TTS_VOICES_DIR: voices       # ou sont lues et ecrites les voix custom
+    #   # Ces defauts-la ne concernent que /v1/audio/speech. Les routes
+    #   # /v1/tts et /v1/tts/batch viennent du SDK et gardent les siens.
+    #   TTS_VOICE: M1
+    #   TTS_LANG: en
+    #   TTS_SPEED: "1.05"
+    #   TTS_STEPS: "8"
+    #   TTS_MAX_CHUNK_LENGTH: "300"  # taille d'un segment de streaming
+    #   TTS_SILENCE_DURATION: "0.3"  # silence entre deux segments
+    restart: unless-stopped
+
+volumes:
+  st-model-cache:

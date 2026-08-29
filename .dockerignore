@@ -1,0 +1,5 @@
+# Le Dockerfile ne copie que api.py et blend.py : on n'envoie que ceux-la au
+# demon. Tout ajout au COPY doit etre ajoute ici en negation.
+*
+!api.py
+!blend.py
