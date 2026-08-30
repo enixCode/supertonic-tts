@@ -33,6 +33,14 @@ with client.audio.speech.with_streaming_response.create(
 
 Deux extraits produits par ce service, tels quels, sans retouche :
 
+**Preset officiel `M1` (Alex), en anglais, réglages par défaut**
+
+<video src="https://raw.githubusercontent.com/enixCode/supertonic-tts/main/demo/preset-en.mp4" controls></video>
+
+**Voix custom `PRESENTER_FR`, en français, `speed=1.18`**
+
+<video src="https://raw.githubusercontent.com/enixCode/supertonic-tts/main/demo/presenter-fr.mp4" controls></video>
+
 | Extrait | Voix | Réglages |
 |---|---|---|
 | [`demo/preset-en.mp4`](demo/preset-en.mp4) | `M1`, preset officiel (Alex) | `lang=en`, `speed=1.0`, `steps=16` |
