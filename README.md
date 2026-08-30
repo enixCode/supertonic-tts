@@ -33,22 +33,23 @@ with client.audio.speech.with_streaming_response.create(
 
 Deux extraits produits par ce service, tels quels, sans retouche :
 
-| Extrait | Voix | Réglages |
-|---|---|---|
-| [`demo/preset-en.mp4`](demo/preset-en.mp4) | `M1`, preset officiel (Alex) | `lang=en`, `speed=1.0`, `steps=16` |
-| [`demo/presenter-fr.mp4`](demo/presenter-fr.mp4) | `PRESENTER_FR`, la voix custom fournie | `lang=fr`, `speed=1.18`, `steps=16` |
+**Preset officiel `M1` (Alex)**, en anglais, réglages par défaut :
+
+<video src="https://github.com/user-attachments/assets/e16aeee0-b91b-46a8-a484-883209f4e236"></video>
+
+**Voix custom `PRESENTER_FR`**, en français, `speed=1.18` :
+
+<video src="https://github.com/user-attachments/assets/576c65df-6d09-43b7-9c38-b873311b8519"></video>
 
 Le premier montre le service tel qu'il sort de la boîte, le second ce qu'on obtient
-en fabriquant sa propre voix avec `blend.py`. Ce sont des `.mp4` (audio plus forme
-d'onde) et non des `.wav` : c'est le seul format que GitHub accepte de jouer dans un
-lecteur, un `.wav` ne serait qu'un lien de téléchargement.
+en fabriquant sa propre voix avec `blend.py`. Les mêmes extraits sont versionnés
+dans [`demo/`](demo) : [`preset-en.mp4`](demo/preset-en.mp4) et
+[`presenter-fr.mp4`](demo/presenter-fr.mp4).
 
-<!-- Pour un lecteur joue directement dans cette page, sans clic : glisser les
-     deux .mp4 dans l'editeur d'une issue GitHub pour obtenir leurs URLs
-     https://github.com/user-attachments/assets/<hash>, puis remplacer le
-     tableau ci-dessus par :
-       <video src="https://github.com/user-attachments/assets/..."></video>
-     GitHub retire toute autre balise media d'un README. -->
+<!-- Les deux src ci-dessus sont des assets GitHub, obtenus en deposant les .mp4
+     dans l'editeur web d'une issue. C'est le SEUL moyen d'avoir un lecteur : une
+     balise video pointant un fichier du depot (raw.githubusercontent.com) est
+     supprimee par la sanitisation, verifie sur le README rendu. -->
 
 Pour les régénérer, l'API lancée :
 
